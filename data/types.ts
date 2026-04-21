@@ -1,0 +1,40 @@
+export interface SubService {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface Service {
+  slug: string;
+  title: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroTag: string;
+  subServices: SubService[];
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  review: string;
+  rating: number;
+  initials: string;
+}
+
+export interface FAQ {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+export interface Stat {
+  value: number;
+  suffix: string;
+  label: string;
+}
+
+export interface NavLink {
+  href: string;
+  label: string;
+}

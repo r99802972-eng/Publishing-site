@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #C8A96E;
+  --dark: #1A1A2E;
+  --navy: #16213E;
+  --light: #F5F0E8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  background-color: #ffffff;
+  color: #1A1A2E;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-playfair), serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-[#C8A96E] text-white font-semibold px-7 py-3 rounded-full hover:bg-[#b5924f] transition-all duration-300 text-sm tracking-wide;
+  }
+  .btn-outline {
+    @apply inline-block border-2 border-[#C8A96E] text-[#C8A96E] font-semibold px-7 py-3 rounded-full hover:bg-[#C8A96E] hover:text-white transition-all duration-300 text-sm tracking-wide;
+  }
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+  .container-pad {
+    @apply max-w-7xl mx-auto px-4 md:px-8;
+  }
+  .gold-text {
+    @apply text-[#C8A96E];
+  }
+  .dark-section {
+    @apply bg-[#1A1A2E] text-white;
+  }
+  .navy-section {
+    @apply bg-[#16213E] text-white;
+  }
+}
+
+/* Swiper custom styles */
+.swiper-pagination-bullet {
+  background: #C8A96E !important;
+}
+.swiper-pagination-bullet-active {
+  background: #C8A96E !important;
+}
+
+/* Scroll animation base */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
