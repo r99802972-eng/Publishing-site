@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlus, FaMinus } from 'react-icons/fa';
-import SectionHeading from '@/components/ui/SectionHeading';
 import { faqs } from '@/data/faqs';
 
 interface FAQItemProps {
@@ -14,17 +13,17 @@ interface FAQItemProps {
 
 function FAQItem({ question, answer, isOpen, onToggle }: FAQItemProps) {
   return (
-    <div className="border-b border-gray-100 last:border-0">
+    <div className="border-b border-gray-200">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-6 text-left gap-4"
+        className="w-full flex items-center justify-between py-4 md:py-6 text-left gap-4 group hover:text-[#FE7028] transition-colors"
         aria-expanded={isOpen}
       >
-        <span className="text-lg font-semibold text-[#1A1A2E] leading-tight">
+        <span className={`text-sm md:text-base font-medium leading-tight transition-colors ${isOpen ? 'text-[#FE7028]' : 'text-gray-900 group-hover:text-[#FE7028]'}`}>
           {question}
         </span>
-        <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#C8A96E] text-white' : 'bg-gray-100 text-gray-500'}`}>
-          {isOpen ? <FaMinus className="text-xs" /> : <FaPlus className="text-xs" />}
+        <div className="flex-shrink-0 flex items-center justify-center text-[#FE7028]">
+          {isOpen ? <FaMinus className="text-[10px]" /> : <FaPlus className="text-[10px]" />}
         </div>
       </button>
       <AnimatePresence>
@@ -47,21 +46,38 @@ function FAQItem({ question, answer, isOpen, onToggle }: FAQItemProps) {
 }
 
 export default function FAQSection() {
-  const [openId, setOpenId] = useState<number | null>(1);
+  const [openId, setOpenId] = useState<number | null>(null);
+
+  const half = Math.ceil(faqs.length / 2);
+  const leftCol = faqs.slice(0, half);
+  const rightCol = faqs.slice(half);
 
   return (
-    <section className="section-pad bg-gray-50/50">
-      <div className="container-pad">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeading
-            tag="General Questions"
-            title="We've answered the most common questions."
-            subtitle="Everything you need to know about starting your publishing journey with confidence."
-            centered
-          />
+    <section className="bg-white py-16 md:py-24">
+      <div className="container-pad w-full max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-4xl font-display font-semibold text-gray-900 mb-4">
+            Frequently Asked Question
+          </h2>
+          <p className="text-sm md:text-base text-gray-500">
+            Here are some of the most common questions our clients ask about our services.
+          </p>
+        </div>
 
-          <div className="bg-white rounded-3xl p-4 md:p-10 shadow-sm border border-gray-100">
-            {faqs.map((faq) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-24">
+          <div>
+            {leftCol.map((faq) => (
+              <FAQItem
+                key={faq.id}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openId === faq.id}
+                onToggle={() => setOpenId(openId === faq.id ? null : faq.id)}
+              />
+            ))}
+          </div>
+          <div>
+            {rightCol.map((faq) => (
               <FAQItem
                 key={faq.id}
                 question={faq.question}

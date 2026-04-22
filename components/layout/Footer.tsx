@@ -11,12 +11,8 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-[#C8A96E] flex items-center justify-center">
-                <span className="text-white font-bold text-lg font-serif">B</span>
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="text-white font-bold text-sm tracking-wider">BENJAMIN</span>
-                <span className="text-[#C8A96E] text-xs tracking-widest">PUBLISHERS</span>
+              <div className="w-32 md:w-48 bg-white rounded p-2">
+                <img src="/logo.png" alt="Northcrest Logo" className="w-full h-auto object-contain" />
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">

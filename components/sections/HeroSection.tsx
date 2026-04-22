@@ -1,64 +1,85 @@
 'use client';
 import { motion } from 'framer-motion';
-import Button from '@/components/ui/Button';
 
 export default function HeroSection() {
-  return (
-    <section className="relative min-h-[90vh] flex items-center bg-[#1A1A2E] overflow-hidden">
-      {/* Background Pattern/Glow */}
-      <div className="absolute top-0 right-0 w-[50%] h-full bg-gradient-to-l from-[#C8A96E]/10 to-transparent pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#C8A96E]/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="container-pad relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 py-20">
+  return (
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+      {/* Background */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop')" }}
+      />
+      <div className="absolute inset-0 z-0 bg-black/55" />
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-8 pt-28 pb-8 flex flex-col items-center text-center">
+
+        {/* Headline */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mb-10 w-full"
         >
-          <span className="inline-block text-[#C8A96E] font-semibold text-sm tracking-widest uppercase mb-6">
-            Award-Winning Publishers
-          </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif text-white mb-8 leading-tight">
-            We Handle the Hard Part, <span className="text-[#C8A96E]">You Keep Writing.</span>
+          <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-sans font-light text-white leading-tight">
+            Turning Manuscripts Into
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 italic mb-10 max-w-xl">
-            From concept to bestseller, we provide the skills, structure, and professional expertise to bring your vision to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button href="/contact-us">Start Your Journey</Button>
-            <Button href="/writing" variant="outline">Explore Our Services</Button>
+
+          {/* Fixed-height container — clips the scaling word cleanly */}
+          <div
+            className="relative mt-1 flex items-center justify-center"
+            style={{ height: '1.25em' }}
+          >
+            <motion.span
+              initial={{ opacity: 0, scale: 0.3 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl md:text-5xl lg:text-[3.5rem] font-display font-bold text-[#FE7028] leading-none"
+            >
+              Masterpieces
+            </motion.span>
           </div>
         </motion.div>
 
+        {/* Contact form bar */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="hidden lg:flex items-center justify-center relative"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="w-full"
         >
-          {/* Abstract Book Representation/Visual */}
-          <div className="relative w-full max-w-md aspect-[3/4] bg-gradient-to-tr from-[#16213E] to-[#1A1A2E] border-2 border-[#C8A96E]/20 rounded-2xl shadow-2xl overflow-hidden p-8 flex flex-col justify-end group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#C8A96E] transform rotate-45 translate-x-16 -translate-y-16 group-hover:translate-x-12 group-hover:-translate-y-12 transition-transform duration-700" />
-            <h3 className="text-white text-3xl font-serif font-bold mb-4">The Art of Storytelling</h3>
-            <p className="text-gray-400 text-sm">Professional Manuscript Writing, Editing & Global Distribution.</p>
-            <div className="mt-8 flex gap-2">
-              {[1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="w-1 h-1 bg-[#C8A96E] rounded-full" />
-              ))}
+          <div className="bg-black/70 backdrop-blur-md rounded-xl px-6 py-5 flex flex-col lg:flex-row items-center gap-4 shadow-2xl">
+            <div className="flex-shrink-0 text-left">
+              <p className="text-white font-bold text-sm uppercase tracking-widest leading-tight">
+                GET IN<br />TOUCH
+              </p>
             </div>
+            <div className="hidden lg:block w-px h-10 bg-gray-600" />
+            <form className="flex-1 w-full flex flex-col sm:flex-row gap-3 items-center">
+              <input type="text" placeholder="Name" className="flex-1 min-w-0 bg-transparent text-white border-b border-gray-500 focus:border-[#FE7028] outline-none px-1 py-2 text-sm placeholder:text-gray-400 transition-colors" />
+              <input type="email" placeholder="Email" className="flex-1 min-w-0 bg-transparent text-white border-b border-gray-500 focus:border-[#FE7028] outline-none px-1 py-2 text-sm placeholder:text-gray-400 transition-colors" />
+              <input type="tel" placeholder="Phone" className="flex-1 min-w-0 bg-transparent text-white border-b border-gray-500 focus:border-[#FE7028] outline-none px-1 py-2 text-sm placeholder:text-gray-400 transition-colors" />
+              <div className="flex-1 min-w-0">
+                <select className="w-full bg-transparent text-gray-400 border-b border-gray-500 focus:border-[#FE7028] outline-none px-1 py-2 text-sm appearance-none cursor-pointer transition-colors">
+                  <option value="" disabled selected className="bg-black">Services</option>
+                  <option value="writing" className="bg-black">Writing</option>
+                  <option value="editing" className="bg-black">Editing</option>
+                  <option value="design" className="bg-black">Design</option>
+                  <option value="publishing" className="bg-black">Publishing</option>
+                </select>
+              </div>
+              <button type="submit" className="flex-shrink-0 bg-[#FE7028] text-white font-bold text-sm px-8 py-2.5 rounded-full hover:bg-[#e8601e] transition-colors shadow-lg shadow-[#FE7028]/30">
+                Send ›
+              </button>
+            </form>
           </div>
-          {/* Floating elements for visual depth */}
-          <motion.div
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-10 -right-10 w-24 h-32 bg-[#16213E] border border-[#C8A96E]/30 rounded-lg shadow-2xl backdrop-blur-sm z-0"
-          />
-          <motion.div
-            animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -bottom-10 -left-10 w-20 h-28 bg-[#16213E] border border-[#C8A96E]/30 rounded-lg shadow-2xl backdrop-blur-sm z-0"
-          />
+
+          <div className="mt-6">
+            <a href="#services" className="inline-block text-white border border-white/40 text-sm px-8 py-2.5 rounded-full hover:bg-white/10 transition-colors">
+              Explore Our Services
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

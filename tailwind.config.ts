@@ -12,19 +12,20 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        gold: {
-          DEFAULT: "#C8A96E",
-          light: "#F5F0E8",
-          dark: "#a68c5b",
+        primary: {
+          DEFAULT: "#FE7028", // Vibrant orange
+          hover: "#E66C37",
+          light: "#FFF0E8",
         },
-        navy: {
-          DEFAULT: "#1A1A2E",
-          light: "#16213E",
-        }
+        dark: {
+          DEFAULT: "#000000",
+          secondary: "#111111",
+          card: "#1E293B",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        serif: ["var(--font-playfair)", "serif"],
+        sans: ["var(--font-roboto)", "sans-serif"],
+        display: ["var(--font-poppins)", "sans-serif"],
       },
     },
   },

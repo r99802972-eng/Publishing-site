@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { FaBars, FaTimes, FaPhone } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { NavLink } from '@/data/types';
 
 const navLinks: NavLink[] = [
@@ -33,33 +34,39 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#1A1A2E] shadow-2xl py-2' : 'bg-[#1A1A2E]/95 py-3'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-[#C8A96E] flex items-center justify-center">
-            <span className="text-white font-bold text-lg font-serif">B</span>
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-white font-bold text-sm tracking-wider">BENJAMIN</span>
-            <span className="text-[#C8A96E] text-xs tracking-widest">PUBLISHERS</span>
-          </div>
-        </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center px-4 md:px-8 h-[72px]">
+      {/* Logo — sits outside the pill bar, on the left */}
+      <Link href="/" className="flex-shrink-0 mr-4">
+        <div className="w-[90px] h-[60px] flex items-center justify-center">
+          <Image
+            src="/logo.png"
+            alt="Northcrest Book Publishers"
+            width={90}
+            height={60}
+            className="object-contain w-full h-full"
+            priority
+          />
+        </div>
+      </Link>
 
-        {/* Desktop Nav */}
+      {/* Pill-shaped nav bar */}
+      <div
+        className={`flex-1 flex items-center justify-between rounded-full px-6 py-2 transition-all duration-300 ${
+          scrolled
+            ? 'bg-[#1a1a1a]/95 backdrop-blur-md shadow-xl'
+            : 'bg-[#1a1a1a]/80 backdrop-blur-sm shadow-lg'
+        }`}
+      >
+        {/* Desktop Nav Links */}
         <nav className="hidden xl:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`px-3 py-2 text-[11px] font-medium tracking-wide transition-colors duration-200 rounded-md ${
+              className={`px-3 py-1.5 text-xs font-medium tracking-wide transition-colors duration-200 rounded-full ${
                 pathname === link.href
-                  ? 'text-[#C8A96E]'
-                  : 'text-gray-300 hover:text-[#C8A96E]'
+                  ? 'text-[#FE7028]'
+                  : 'text-gray-200 hover:text-[#FE7028]'
               }`}
             >
               {link.label}
@@ -67,33 +74,31 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <div className="hidden xl:flex items-center gap-4">
-          <a
-            href="tel:8882604874"
-            className="flex items-center gap-2 text-[#C8A96E] text-sm font-medium hover:text-white transition-colors"
+        {/* Mobile: show site name */}
+        <span className="xl:hidden text-white font-semibold text-sm">Menu</span>
+
+        {/* CTA Button */}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/contact-us"
+            className="bg-[#FE7028] text-white text-xs font-bold px-5 py-2 rounded-full hover:bg-[#e8601e] transition-colors shadow-md shadow-[#FE7028]/30 whitespace-nowrap"
           >
-            <FaPhone className="text-xs" />
-            (888) 260-4874
-          </a>
-          <Link href="/contact-us" className="btn-primary text-xs px-5 py-2">
             Get Started
           </Link>
+          {/* Hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="xl:hidden text-white text-lg p-1 hover:text-[#FE7028] transition-colors"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
-
-        {/* Hamburger */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="xl:hidden text-white text-xl p-2 hover:text-[#C8A96E] transition-colors"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </button>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="xl:hidden bg-[#16213E] border-t border-[#C8A96E]/20 py-4 absolute top-full left-0 right-0 shadow-xl">
+        <div className="xl:hidden bg-[#1a1a1a] border-t border-[#FE7028]/20 py-4 absolute top-full left-0 right-0 shadow-xl rounded-b-2xl mx-4">
           <nav className="px-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
@@ -101,18 +106,15 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                   pathname === link.href
-                    ? 'bg-[#C8A96E]/10 text-[#C8A96E]'
-                    : 'text-gray-300 hover:text-[#C8A96E] hover:bg-[#C8A96E]/5'
+                    ? 'bg-[#FE7028]/10 text-[#FE7028]'
+                    : 'text-white hover:text-[#FE7028] hover:bg-[#FE7028]/5'
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="mt-3 flex flex-col gap-2 border-t border-[#C8A96E]/20 pt-3">
-              <a href="tel:8882604874" className="flex items-center gap-2 text-[#C8A96E] text-sm px-4">
-                <FaPhone className="text-xs" /> (888) 260-4874
-              </a>
-              <Link href="/contact-us" className="btn-primary text-center mx-4 text-sm py-2">
+            <div className="mt-3 border-t border-[#FE7028]/20 pt-3 px-4">
+              <Link href="/contact-us" className="block text-center bg-[#FE7028] text-white text-sm font-bold px-5 py-3 rounded-full hover:bg-[#e8601e] transition-colors">
                 Get Started
               </Link>
             </div>
