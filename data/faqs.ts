@@ -13,7 +13,7 @@ export const faqs: FAQ[] = [
   {
     id: 2,
     question: "Do I keep the rights to my book?",
-    answer: "Absolutely! At Benjamin Publishers, authors retain 100% of their intellectual property rights. We are a service provider, not a traditional publisher that takes your rights."
+    answer: "Absolutely! At Northcrest Book Publishers, authors retain 100% of their intellectual property rights. We are a service provider, not a traditional publisher that takes your rights."
   },
   {
     id: 3,

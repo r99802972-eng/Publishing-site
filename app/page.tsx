@@ -2,6 +2,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import ClientLogos from '@/components/sections/ClientLogos';
 import SplitIntroSection from '@/components/sections/SplitIntroSection';
 import PublishingPathSection from '@/components/sections/PublishingPathSection';
+import ContactStrip from '@/components/sections/ContactStrip';
 import OrangeBannerSection from '@/components/sections/OrangeBannerSection';
 import BookDesignSection from '@/components/sections/BookDesignSection';
 import DarkSuccessSection from '@/components/sections/DarkSuccessSection';
@@ -16,6 +17,7 @@ export default function Home() {
       <ClientLogos />
       <SplitIntroSection />
       <PublishingPathSection />
+      <ContactStrip />
       <OrangeBannerSection />
       <BookDesignSection />
       <DarkSuccessSection />

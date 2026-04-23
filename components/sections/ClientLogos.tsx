@@ -1,11 +1,30 @@
 export default function ClientLogos() {
+  const logos = [
+    { name: 'Amazon', url: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+    { name: 'LinkedIn', url: 'https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg' },
+    { name: 'Google', url: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
+    { name: 'Facebook', url: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Facebook_Logo_%282019%29.svg' },
+  ];
+
+  // Repeat logos multiple times to ensure enough width for the marquee
+  const repeatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
+
   return (
-    <section className="bg-white py-8 border-b border-gray-100">
-      <div className="container-pad flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn" className="h-6 md:h-8 object-contain" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-6 md:h-8 object-contain" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" className="h-6 md:h-8 object-contain" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Bing_logo_2016.svg" alt="Bing" className="h-6 md:h-8 object-contain" />
+    <section className="bg-white py-12 border-y border-gray-100 overflow-hidden w-full">
+      <div className="marquee-container w-full">
+        <div className="marquee-content flex items-center gap-16 md:gap-32">
+          {repeatedLogos.map((logo, index) => (
+            <img
+              key={`${logo.name}-${index}`}
+              src={logo.url}
+              alt={logo.name}
+              className="h-6 md:h-8 object-contain shrink-0"
+              style={{ 
+                filter: 'invert(72%) sepia(35%) saturate(464%) hue-rotate(5deg) brightness(91%) contrast(85%)' 
+              }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

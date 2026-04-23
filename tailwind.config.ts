@@ -10,18 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {
-          DEFAULT: "#FE7028", // Vibrant orange
-          hover: "#E66C37",
-          light: "#FFF0E8",
-        },
-        dark: {
-          DEFAULT: "#000000",
-          secondary: "#111111",
-          card: "#1E293B",
-        },
+        primary: "#0F2440",        // Navy Blue from logo
+        "primary-hover": "#1A3A5A",
+        secondary: "#C8A96E",      // Gold from logo
+        "secondary-hover": "#B08D4D",
+        "site-bg": "#111111",        // Main background
+        "site-card": "#1A1A1A",      // Nav/Card background
+        "muted-text": "#9CA3AF",     // Grey text
+        "muted-border": "#374151",   // Subtle lines
+
       },
       fontFamily: {
         sans: ["var(--font-roboto)", "sans-serif"],

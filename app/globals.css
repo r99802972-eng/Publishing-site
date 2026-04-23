@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --primary: #FE7028;
-  --dark: #000000;
-  --secondary-bg: #111111;
-  --card-bg: #1E293B;
-  --light: #F0F5FA;
+  --primary:       #0F2440;
+  --primary-hover: #1A3A5A;
+  --secondary:     #C8A96E;
+  --secondary-hover: #B08D4D;
+  --site-bg:       #111111;
+  --site-card:     #1A1A1A;
+  --light:         #F0F5FA;
+  --muted-text:    #9CA3AF;
+  --muted-border:  #374151;
 }
 
 * {
@@ -22,7 +26,7 @@ html {
 
 body {
   font-family: var(--font-roboto), sans-serif;
-  background-color: var(--secondary-bg);
+  background-color: var(--site-bg);
   color: #FFFFFF;
   overflow-x: hidden;
 }
@@ -33,10 +37,19 @@ h1, h2, h3, h4, h5, h6 {
 
 @layer components {
   .btn-primary {
-    @apply inline-block bg-[#FE7028] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#F76927] hover:scale-95 transition-all duration-300 text-sm tracking-wide shadow-md;
+    @apply inline-block text-white font-semibold px-8 py-3 rounded-full hover:scale-95 transition-all duration-300 text-sm tracking-wide shadow-md;
+    background-color: var(--secondary);
+  }
+  .btn-primary:hover {
+    background-color: var(--secondary-hover);
   }
   .btn-outline {
-    @apply inline-block border-2 border-[#FE7028] text-[#FE7028] font-semibold px-8 py-3 rounded-full hover:bg-[#FE7028] hover:text-white hover:scale-95 transition-all duration-300 text-sm tracking-wide shadow-md;
+    @apply inline-block font-semibold px-8 py-3 rounded-full hover:text-white hover:scale-95 transition-all duration-300 text-sm tracking-wide shadow-md;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+  }
+  .btn-outline:hover {
+    background-color: var(--secondary);
   }
   .section-pad {
     @apply py-16 md:py-24;
@@ -45,13 +58,15 @@ h1, h2, h3, h4, h5, h6 {
     @apply max-w-7xl mx-auto px-4 md:px-8;
   }
   .primary-text {
-    @apply text-[#FE7028];
+    @apply text-primary;
   }
   .dark-section {
-    @apply bg-[#0A0A0A] text-white;
+    @apply text-white;
+    background-color: var(--site-bg);
   }
   .secondary-section {
-    @apply bg-[#111111] text-white;
+    @apply text-white;
+    background-color: var(--site-card);
   }
   .white-section {
     @apply bg-white text-gray-900;
@@ -60,11 +75,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Swiper custom styles */
 .swiper-pagination-bullet {
-  background: #FE7028 !important;
+  background: var(--secondary) !important;
 }
 .swiper-pagination-bullet-active {
-  background: #FE7028 !important;
+  background: var(--secondary) !important;
 }
+
 
 /* Scroll animation base */
 .fade-up {
@@ -75,4 +91,37 @@ h1, h2, h3, h4, h5, h6 {
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  gap: 2rem;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 12.5%,
+    rgb(0, 0, 0) 87.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 4rem;
+  min-width: 100%;
+  animation: marquee 90s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
 }

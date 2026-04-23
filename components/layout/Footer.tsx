@@ -1,32 +1,44 @@
 import Link from 'next/link';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="dark-section pt-16 pb-8 border-t border-[#C8A96E]/10">
-      <div className="container-pad">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-[#0A0A0A] pt-20 pb-10 border-t border-white/5">
+      <div className="container-pad w-full max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Brand Col */}
-          <div className="flex flex-col gap-6">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-32 md:w-48 bg-white rounded p-2">
-                <img src="/logo.png" alt="Northcrest Logo" className="w-full h-auto object-contain" />
+          <div className="flex flex-col gap-8">
+            <Link href="/" className="flex-shrink-0 transition-transform hover:scale-105">
+              <div className="w-48">
+                <img 
+                  src="/logo.png" 
+                  alt="Northcrest Book Publishers Logo" 
+                  className="w-full h-auto object-contain brightness-125 contrast-125 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]" 
+                />
               </div>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              At Benjamin Publishers, we believe every great story deserves to be seen, read, and remembered. Whether you&apos;re polishing your manuscript or preparing to launch, we&apos;re here to make your journey stress-free.
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs font-medium">
+              At Northcrest Book Publishers, we believe every great story deserves to be seen, read, and remembered. We turn manuscripts into global masterpieces.
             </p>
+            <div className="flex gap-4">
+              {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map((Icon, idx) => (
+                <Link key={idx} href="#" className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#C8A96E] hover:bg-[#C8A96E] hover:text-[#0F2440] transition-all duration-300">
+                  <Icon className="text-sm" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-white text-lg mb-6 font-semibold">Quick Links</h4>
-            <ul className="flex flex-col gap-3">
+          <div className="lg:pl-8">
+            <h4 className="text-[#C8A96E] text-xs font-bold uppercase tracking-[0.2em] mb-8">Services</h4>
+            <ul className="flex flex-col gap-4">
               {['Writing', 'Editing', 'Design', 'Publishing', 'Printing', 'Marketing'].map((item) => (
                 <li key={item}>
-                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 text-sm hover:text-[#C8A96E] transition-colors">
+                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 text-[15px] font-medium hover:text-[#C8A96E] transition-colors flex items-center gap-2 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96E]/30 group-hover:bg-[#C8A96E] transition-all duration-300" />
                     {item}
                   </Link>
                 </li>
@@ -35,9 +47,9 @@ export default function Footer() {
           </div>
 
           {/* Legal */}
-          <div>
-            <h4 className="text-white text-lg mb-6 font-semibold">Legal</h4>
-            <ul className="flex flex-col gap-3">
+          <div className="lg:pl-4">
+            <h4 className="text-[#C8A96E] text-xs font-bold uppercase tracking-[0.2em] mb-8">Company</h4>
+            <ul className="flex flex-col gap-4">
               {[
                 { label: 'Why Us', href: '/why-us' },
                 { label: 'Contact Us', href: '/contact-us' },
@@ -45,7 +57,8 @@ export default function Footer() {
                 { label: 'Privacy Policy', href: '/privacy-policy' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-gray-400 text-sm hover:text-[#C8A96E] transition-colors">
+                  <Link href={item.href} className="text-gray-400 text-[15px] font-medium hover:text-[#C8A96E] transition-colors flex items-center gap-2 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96E]/30 group-hover:bg-[#C8A96E] transition-all duration-300" />
                     {item.label}
                   </Link>
                 </li>
@@ -55,32 +68,47 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white text-lg mb-6 font-semibold">Contact Us</h4>
-            <ul className="flex flex-col gap-4 text-gray-400 text-sm">
-              <li className="flex items-start gap-3">
-                <FaPhone className="mt-1 text-[#C8A96E]" />
-                <span>(888) 260-4874</span>
+            <h4 className="text-[#C8A96E] text-xs font-bold uppercase tracking-[0.2em] mb-8">Connect</h4>
+            <ul className="flex flex-col gap-6 text-gray-400">
+              <li className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#C8A96E] group-hover:bg-[#C8A96E]/10 transition-colors">
+                  <FaPhone className="text-sm" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold uppercase tracking-widest opacity-50 mb-0.5">Phone</span>
+                  <span className="text-white font-bold text-sm">(888) 260-4874</span>
+                </div>
               </li>
-              <li className="flex items-start gap-3">
-                <FaEnvelope className="mt-1 text-[#C8A96E]" />
-                <span>Info@benjaminpublishers.com</span>
+              <li className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#C8A96E] group-hover:bg-[#C8A96E]/10 transition-colors">
+                  <FaEnvelope className="text-sm" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold uppercase tracking-widest opacity-50 mb-0.5">Email</span>
+                  <span className="text-white font-bold text-sm truncate">Info@northcrestpublishers.com</span>
+                </div>
               </li>
-              <li className="flex items-start gap-3">
-                <FaMapMarkerAlt className="mt-1 text-[#C8A96E]" />
-                <span>100 Wilshire Blvd., Suite 700, Santa Monica, CA 90401</span>
+              <li className="flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#C8A96E] group-hover:bg-[#C8A96E]/10 transition-colors mt-1">
+                  <FaMapMarkerAlt className="text-sm" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold uppercase tracking-widest opacity-50 mb-0.5">Office</span>
+                  <span className="text-white font-bold text-sm leading-tight">100 Wilshire Blvd, Suite 700,<br/>Santa Monica, CA 90401</span>
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#C8A96E]/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-xs text-center md:text-left">
-            © {currentYear} Benjamin Publishers. All Rights Reserved.
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-gray-500 text-[13px] font-medium">
+            © {currentYear} Northcrest Book Publishers. <span className="hidden md:inline">Crafting Masterpieces Globally.</span>
           </p>
-          <div className="flex gap-6">
-            <Link href="/terms-conditions" className="text-gray-500 text-xs hover:text-[#C8A96E]">Terms & Conditions</Link>
-            <Link href="/privacy-policy" className="text-gray-500 text-xs hover:text-[#C8A96E]">Privacy Policy</Link>
+          <div className="flex gap-8">
+            <Link href="/terms-conditions" className="text-gray-500 text-[13px] font-medium hover:text-[#C8A96E] transition-colors">Terms of Service</Link>
+            <Link href="/privacy-policy" className="text-gray-500 text-[13px] font-medium hover:text-[#C8A96E] transition-colors">Privacy Policy</Link>
           </div>
         </div>
       </div>

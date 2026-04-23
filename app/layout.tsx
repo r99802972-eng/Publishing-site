@@ -8,19 +8,19 @@ const roboto = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700']
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-poppins' });
 
 export const metadata: Metadata = {
-  title: 'Benjamin Publishers | Book Writing, Editing & Publishing Services',
-  description: 'Benjamin Publishers helps authors bring their stories to life with professional book writing, editing, design, publishing, and marketing services. Turn your manuscript into a bestseller.',
+  title: 'Northcrest Book Publishers | Professional Book Writing & Publishing',
+  description: 'Northcrest Book Publishers helps authors bring their stories to life with professional book writing, editing, design, publishing, and marketing services. Turn your manuscript into a masterpiece.',
   openGraph: {
-    title: 'Benjamin Publishers | Book Writing, Editing & Publishing Services',
+    title: 'Northcrest Book Publishers | Professional Book Writing & Publishing',
     description: 'We handle the hard part, you keep writing. From editing to publishing, we simplify the process for authors.',
-    url: 'https://benjaminpublishers.com',
-    siteName: 'Benjamin Publishers',
+    url: 'https://northcrestpublishers.com',
+    siteName: 'Northcrest Book Publishers',
     images: [
       {
         url: '/logo.png',
         width: 800,
         height: 600,
-        alt: 'Benjamin Publishers Logo',
+        alt: 'Northcrest Book Publishers Logo',
       },
     ],
     locale: 'en_US',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Benjamin Publishers',
+    title: 'Northcrest Book Publishers',
     description: 'Professional Book Writing & Publishing Services',
     images: ['/logo.png'],
   },
@@ -40,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${roboto.variable} ${poppins.variable} font-sans antialiased bg-dark text-gray-200`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${roboto.variable} ${poppins.variable} font-sans antialiased bg-site-bg text-gray-200`}>
         <Navbar />
         <main className="min-h-screen">
           {children}

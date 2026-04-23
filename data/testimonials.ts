@@ -11,14 +11,14 @@ export const testimonials: Testimonial[] = [
     id: 1,
     name: "Sarah Williams",
     role: "Fiction Author",
-    review: "Working with Benjamin Publishers was the best decision I made for my writing career. Their editors are insightful, and my cover is absolutely stunning. I felt supported throughout the entire process.",
+    review: "Working with Northcrest Book Publishers was the best decision I made for my writing career. Their editors are insightful, and my cover is absolutely stunning. I felt supported throughout the entire process.",
     initials: "SW"
   },
   {
     id: 2,
     name: "Dr. Robert Chen",
     role: "Non-Fiction Author",
-    review: "The level of professionalism at Benjamin Publishers is unparalleled. They helped me transform my research into a readable, impactful book that is now reaching a global audience.",
+    review: "The level of professionalism at Northcrest is unparalleled. They helped me transform my research into a readable, impactful book that is now reaching a global audience.",
     initials: "RC"
   },
   {
