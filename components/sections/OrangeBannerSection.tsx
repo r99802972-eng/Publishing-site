@@ -76,22 +76,23 @@ export default function OrangeBannerSection() {
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#C8A96E]/5 skew-x-[-20deg] translate-x-1/3 pointer-events-none" />
 
-      <div className="container-pad relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="container-pad relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-32 lg:gap-24 items-center">
 
         {/* Left Side: Premium Floating Book Mockup */}
-        <div className="order-2 lg:order-1">
+        <div className="order-2 lg:order-1 mt-12 lg:mt-0">
           <FloatingBook />
         </div>
 
         {/* Right Side: Content and Branding */}
-        <div className="order-1 lg:order-2 text-white">
+        <div className="order-1 lg:order-2 text-white text-center lg:text-left">
           <h2 className="text-3xl md:text-5xl lg:text-5xl font-display font-bold mb-10 leading-tight">
-            We Handle Every Aspect Of The Publishing Process To Give You The Greatest Results Within Months Or Less.
+            We Handle Every Aspect Of The Publishing Process <br className="hidden lg:block" />
+            <span className="text-[#C8A96E]">To Give You The Greatest Results Within Months Or Less.</span>
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 mb-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 mb-14 text-left">
             {benefits.map((benefit, i) => (
-              <div key={i} className="flex items-center gap-4 group">
+              <div key={i} className="flex items-center gap-4 group justify-center lg:justify-start">
                 <div className="bg-[#C8A96E]/20 p-2 rounded-full group-hover:bg-[#C8A96E]/30 transition-all duration-300">
                   <FaCheckCircle className="text-[#C8A96E] text-lg shrink-0 transition-transform group-hover:scale-110" />
                 </div>
@@ -100,7 +101,7 @@ export default function OrangeBannerSection() {
             ))}
           </div>
 
-          <div className="flex">
+          <div className="flex justify-center lg:justify-start">
             <Link
               href="/contact-us"
               className="inline-block bg-[#C8A96E] text-[#0A1D37] font-bold px-12 py-5 rounded-full hover:bg-[#DBC598] hover:shadow-[0_20px_50px_rgba(200,169,110,0.3)] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-xl text-xl"

@@ -1,10 +1,49 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, animate, useTransform } from 'framer-motion';
+
+// 🎨 Sub-component for individual character pulse
+function AnimatedChar({ char, index, progress }: { char: string, index: number, progress: any }) {
+  const stagger = 0.03;
+  const duration = 0.15;
+  const start = index * stagger;
+  const end = start + duration;
+
+  const scale = useTransform(progress, (p: number) => {
+    if (p < start || p > end) return 1;
+    const local = (p - start) / duration;
+    return 1 - 0.4 * Math.sin(local * Math.PI);
+  });
+
+  const color = useTransform(progress, (p: number) => {
+    if (p < start || p > end) return "#C8A96E";
+    return "#F1E4C9";
+  });
+
+  return (
+    <motion.span 
+      style={{ scale, color }} 
+      className="inline-block will-change-transform whitespace-pre"
+    >
+      {char}
+    </motion.span>
+  );
+}
 
 export default function BookDesignSection() {
+  const progress = useMotionValue(0);
+
+  useEffect(() => {
+    const controls = animate(progress, 1, {
+      duration: 2.2,
+      ease: "linear",
+      repeat: Infinity,
+      repeatDelay: 1,
+    });
+    return () => controls.stop();
+  }, [progress]);
   const points = [
     "Custom cover design tailored to your genre",
     "Professional interior formatting & layout",
@@ -35,23 +74,12 @@ export default function BookDesignSection() {
             <h2 className="text-3xl md:text-5xl font-display font-bold text-[#0A1D37] mb-8 leading-tight">
               <span className="inline-flex overflow-visible">
                 {"Creating Covers".split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    animate={{
-                      y: [0, -5, 0],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      ease: "easeInOut",
-                      delay: i * 0.07,
-                    }}
-                    className="text-[#C8A96E] inline-block whitespace-pre"
-                  >
-                    {char}
-                  </motion.span>
+                  <AnimatedChar 
+                    key={i} 
+                    char={char} 
+                    index={i} 
+                    progress={progress} 
+                  />
                 ))}
               </span> & Interiors That Captivate Readers
             </h2>

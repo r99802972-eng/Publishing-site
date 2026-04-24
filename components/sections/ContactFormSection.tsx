@@ -1,10 +1,49 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, animate, useTransform } from 'framer-motion';
+
+// 🎨 Sub-component for individual character pulse
+function AnimatedChar({ char, index, progress }: { char: string, index: number, progress: any }) {
+  const stagger = 0.03;
+  const duration = 0.15;
+  const start = index * stagger;
+  const end = start + duration;
+
+  const scale = useTransform(progress, (p: number) => {
+    if (p < start || p > end) return 1;
+    const local = (p - start) / duration;
+    return 1 - 0.4 * Math.sin(local * Math.PI);
+  });
+
+  const color = useTransform(progress, (p: number) => {
+    if (p < start || p > end) return "#C8A96E";
+    return "#F1E4C9";
+  });
+
+  return (
+    <motion.span
+      style={{ scale, color }}
+      className="inline-block will-change-transform whitespace-pre"
+    >
+      {char}
+    </motion.span>
+  );
+}
 
 export default function ContactFormSection() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const progress = useMotionValue(0);
+
+  useEffect(() => {
+    const controls = animate(progress, 1, {
+      duration: 2.2,
+      ease: "linear",
+      repeat: Infinity,
+      repeatDelay: 1,
+    });
+    return () => controls.stop();
+  }, [progress]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +65,7 @@ export default function ContactFormSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           <div className="flex flex-col">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -34,37 +73,37 @@ export default function ContactFormSection() {
             >
               Get In Touch
             </motion.span>
-            
-            <motion.h2 
+
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-8 leading-[1.1] uppercase tracking-tighter"
             >
-              Let's Publish <br />
+              Let's Create <br />
               <span className="text-[#C8A96E]">
                 {"Something ".split("").map((char, i) => (
-                  <motion.span
-                    key={`header-${i}`}
-                    animate={{ y: [0, -4, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.08 }}
-                    className="inline-block whitespace-pre"
-                  >
-                    {char}
-                  </motion.span>
+                  <AnimatedChar
+                    key={i}
+                    char={char}
+                    index={i}
+                    progress={progress}
+                  />
                 ))}
               </span>
-              Remarkable.
+              Worth Remembering.
             </motion.h2>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               className="text-gray-400 mb-12 text-sm md:text-base leading-relaxed max-w-md font-medium"
             >
-              Ready to take the next step in your publishing journey? Fill out the form and our experienced team will get back to you shortly.
+              At Northcrest Book Publishers, we don’t just publish books—we help shape ideas into powerful, lasting works. 
+              Whether you're at the beginning or ready to launch, our team ensures your journey is seamless, professional, and thoughtfully guided. 
+              No noise. No pressure. Just expertise, creativity, and results.
             </motion.p>
 
             <div className="flex flex-col gap-8">
@@ -73,7 +112,7 @@ export default function ContactFormSection() {
                 { icon: <FaEnvelope />, label: 'Email Us', value: 'Info@northcrestpublishers.com' },
                 { icon: <FaMapMarkerAlt />, label: 'Our Office', value: '123 Publishing Way, NY' }
               ].map((item, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -93,7 +132,7 @@ export default function ContactFormSection() {
             </div>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -101,11 +140,11 @@ export default function ContactFormSection() {
           >
             {/* Form decorative glow */}
             <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#C8A96E]/20 rounded-full blur-[60px]" />
-            
-            <h3 className="text-white font-display text-2xl md:text-3xl font-bold mb-10 tracking-tight">Message Us Today</h3>
+
+            <h3 className="text-white font-display text-2xl md:text-3xl font-bold mb-10 tracking-tight">Take the First Step—Reach Out Today</h3>
 
             {formState === 'success' ? (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center py-12"
@@ -133,7 +172,7 @@ export default function ContactFormSection() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <input
-                      type="email" required placeholder="Email Address"
+                      type="email" required placeholder="Your Email"
                       className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300"
                     />
                   </div>
@@ -142,7 +181,7 @@ export default function ContactFormSection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <input
-                      type="tel" required placeholder="Phone Number"
+                      type="tel" required placeholder="Your Phone #"
                       className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300"
                     />
                   </div>
@@ -158,17 +197,17 @@ export default function ContactFormSection() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <textarea 
+                  <textarea
                     rows={4}
-                    placeholder="Tell us about your book project..."
+                    placeholder="Message / Query"
                     className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300 resize-none"
                   />
                 </div>
 
                 <div className="mt-4">
-                  <button 
-                    type="submit" 
-                    className="w-full bg-[#C8A96E] text-[#0F2440] font-black rounded-2xl py-5 uppercase text-xs tracking-[0.2em] hover:bg-[#DBC598] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_10px_30px_rgba(200,169,110,0.3)] disabled:opacity-50 disabled:cursor-not-allowed" 
+                  <button
+                    type="submit"
+                    className="w-full bg-[#C8A96E] text-[#0F2440] font-black rounded-2xl py-5 uppercase text-xs tracking-[0.2em] hover:bg-[#DBC598] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_10px_30px_rgba(200,169,110,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={formState === 'submitting'}
                   >
                     {formState === 'submitting' ? 'Processing...' : 'Start Your Journey'}

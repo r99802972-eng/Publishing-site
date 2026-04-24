@@ -21,7 +21,7 @@ export default function ContactStrip() {
           </div>
 
           {/* Form */}
-          <form className="flex-1 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 items-end">
+          <form className="flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-10 items-end">
             <div className="relative group">
               <label className="block text-[#C8A96E] text-xs font-bold uppercase tracking-widest mb-3 transition-colors group-focus-within:text-white">
                 Name
@@ -57,7 +57,12 @@ export default function ContactStrip() {
                   <option value="writing" className="bg-[#0D0D0D] text-white">Ghostwriting</option>
                   <option value="editing" className="bg-[#0D0D0D] text-white">Full Editing</option>
                   <option value="design" className="bg-[#0D0D0D] text-white">Book Design</option>
+                  <option value="illustration" className="bg-[#0D0D0D] text-white">Illustration</option>
                   <option value="publishing" className="bg-[#0D0D0D] text-white">Publishing</option>
+                  <option value="printing" className="bg-[#0D0D0D] text-white">Printing</option>
+                  <option value="marketing" className="bg-[#0D0D0D] text-white">Marketing</option>
+                  <option value="author-website" className="bg-[#0D0D0D] text-white">Author Website</option>
+                  <option value="audio-book" className="bg-[#0D0D0D] text-white">Audio Book</option>
                 </select>
                 <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-full text-[#C8A96E] text-sm">▾</span>
               </div>
@@ -66,12 +71,9 @@ export default function ContactStrip() {
             <div className="lg:pb-1 w-full flex justify-center lg:justify-end">
               <button
                 type="submit"
-                className="w-full max-w-[260px] bg-[#C8A96E] hover:bg-[#DBC598] text-[#0A1D37] font-bold flex items-center justify-between pl-7 pr-1.5 py-3.5 rounded-full transition-all group shadow-xl active:scale-95"
+                className="w-full max-w-[260px] bg-[#C8A96E] hover:bg-[#DBC598] text-[#0A1D37] font-bold flex items-center justify-center py-4 rounded-full transition-all group shadow-xl active:scale-95"
               >
-                <span className="text-[12px] uppercase tracking-[0.2em] whitespace-nowrap ml-4">Send Message</span>
-                {/* <span className="bg-[#0A1D37] text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition-colors shrink-0">
-                  →
-                </span> */}
+                <span className="text-[12px] uppercase tracking-[0.2em] whitespace-nowrap">Send Message</span>
               </button>
             </div>
           </form>

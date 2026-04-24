@@ -2,7 +2,10 @@ import { notFound } from 'next/navigation';
 import { servicesData } from '@/data/services';
 import ServiceHero from '@/components/service/ServiceHero';
 import ServiceSubCards from '@/components/service/ServiceSubCards';
+import ServiceWorkflow from '@/components/service/ServiceWorkflow';
+import ClientLogos from '@/components/sections/ClientLogos';
 import FAQSection from '@/components/sections/FAQSection';
+import ContactStrip from '@/components/sections/ContactStrip';
 import ContactFormSection from '@/components/sections/ContactFormSection';
 
 interface PageProps {
@@ -28,15 +31,15 @@ export default async function ServicePage({ params }: PageProps) {
   return (
     <>
       <ServiceHero 
-        tag={service.heroTag}
-        title={service.heroTitle}
-        subtitle={service.heroSubtitle}
+        service={service}
       />
-      <ServiceSubCards items={service.subServices} />
-      {/* 
-        We could add page-specific sections here if needed, 
-        but the site structure keeps them quite generic. 
-      */}
+      <ClientLogos />
+      <ServiceSubCards 
+        items={service.subServices} 
+        serviceName={service.cardsTitle} 
+      />
+      <ServiceWorkflow serviceName={service.workflowTitle} />
+      <ContactStrip />
       <FAQSection />
       <ContactFormSection />
     </>

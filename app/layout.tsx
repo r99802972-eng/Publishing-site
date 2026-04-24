@@ -41,7 +41,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${roboto.variable} ${poppins.variable} font-sans antialiased bg-site-bg text-gray-200`}>
+      <body suppressHydrationWarning className={`${roboto.variable} ${poppins.variable} font-sans antialiased bg-site-bg text-gray-200`}>
         <Navbar />
         <main className="min-h-screen">
           {children}

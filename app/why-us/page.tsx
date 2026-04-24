@@ -3,18 +3,27 @@ import ProcessSteps from '@/components/why-us/ProcessSteps';
 import StatsSection from '@/components/sections/StatsSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ContactFormSection from '@/components/sections/ContactFormSection';
+import ClientLogos from '@/components/sections/ClientLogos';
+import SplitIntroSection from '@/components/sections/SplitIntroSection';
+import PublishingPathSection from '@/components/sections/PublishingPathSection';
+import ContactStrip from '@/components/sections/ContactStrip';
+import FAQSection from '@/components/sections/FAQSection';
+import { servicesData } from '@/data/services';
 
 export default function WhyUs() {
+  const aboutService = servicesData['about'];
+
   return (
     <>
       <ServiceHero
-        tag="About Us"
-        title="Your Story deserves to be Remarkable."
-        subtitle="At northcrestst Book Publishers, we believe every author has a powerful story to tell. Our mission is to provide the expert tools and support needed to turn those stories into professional, published works of art."
+        service={aboutService}
       />
-      <ProcessSteps />
+      <ClientLogos />
+      <SplitIntroSection />
       <StatsSection />
-      <TestimonialsSection />
+      <PublishingPathSection />
+      <ContactStrip/>
+      <FAQSection/>
       <ContactFormSection />
     </>
   );

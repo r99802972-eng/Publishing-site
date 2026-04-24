@@ -8,8 +8,11 @@ export interface Service {
   slug: string;
   title: string;
   heroTitle: string;
+  cardsTitle: string;
+  workflowTitle: string;
   heroSubtitle: string;
   heroTag: string;
+  heroClosing?: string;
   subServices: SubService[];
 }
 

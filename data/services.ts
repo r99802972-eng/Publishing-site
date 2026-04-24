@@ -5,8 +5,11 @@ export const servicesData: Record<string, Service> = {
   writing: {
     slug: 'writing',
     title: 'Writing',
-    heroTitle: 'Professional Book Writing Services',
-    heroSubtitle: 'Our professional book writing team is here to transform your dreams into captivating stories that soar. We\'re here to pave the way for your literary triumph, crafting a manuscript that becomes the very bedrock of your book\'s success.',
+    heroTitle: 'Your Story Deserves to Be Written the Right Way',
+    cardsTitle: 'Writing Solutions',
+    workflowTitle: 'Ghost Writing',
+    heroSubtitle: "We don’t just write books—we transform raw ideas into powerful, professionally crafted manuscripts that are ready to publish and sell.\n\nIf you’ve ever thought “I want to publish a book but don’t know how” or “I need someone to write my book”, you’re exactly where most successful authors once started. Our book writing services, including ghostwriting, editing support, and proofreading, turn confusion into clarity and ideas into structured, compelling manuscripts built for self publishing services, ebook publishing services, and Amazon success. From shaping your concept to preparing it for Amazon KDP publishing, we guide you through a process that removes doubt and replaces it with direction—so you can confidently publish your book on Amazon and become a published author.",
+    heroClosing: 'Every published author starts with an unfinished idea—the difference is who helps them bring it to life.',
     heroTag: 'Writing Services',
     subServices: [
       {
@@ -44,8 +47,11 @@ export const servicesData: Record<string, Service> = {
   editing: {
     slug: 'editing',
     title: 'Editing',
-    heroTitle: 'Professional Book Editing Services',
-    heroSubtitle: 'Our expert editors refine your manuscript to perfection — polishing every sentence, chapter, and idea so your book reads beautifully and leaves a lasting impression on every reader.',
+    heroTitle: 'Turn Your Draft Into a Book People Actually Want to Read',
+    cardsTitle: 'Editing Solutions',
+    workflowTitle: 'Editing',
+    heroSubtitle: "Most manuscripts don’t fail because of ideas—they fail because they’re not refined properly. We turn rough drafts into professional, publication-ready manuscripts that feel clear, engaging, and impossible to put down.\n\nWhether you’re searching for a professional book editor or need to edit your manuscript before publishing, our book editing services focus on structure, clarity, flow, and emotional impact—while protecting your original voice. From proofreading your book to preparing it for self publishing services, ebook publishing services, or Amazon KDP publishing, we make sure your writing meets real publishing standards—not just “good enough.”",
+    heroClosing: 'A powerful story doesn’t just get edited—it gets elevated.',
     heroTag: 'Editing Services',
     subServices: [
       {
@@ -83,8 +89,11 @@ export const servicesData: Record<string, Service> = {
   design: {
     slug: 'design',
     title: 'Design',
-    heroTitle: 'Stunning Book Cover & Interior Design',
-    heroSubtitle: 'Your book\'s design is its first impression — we make it unforgettable with covers and layouts that captivate readers from the very first glance and keep them turning pages.',
+    heroTitle: 'Design That Decides Whether Your Book Gets Read or Ignored',
+    cardsTitle: 'Design Solutions',
+    workflowTitle: 'Book Design',
+    heroSubtitle: "Before a reader trusts your words, they judge your book in seconds. We create visually powerful book covers and layouts that instantly capture attention and build credibility.\n\nFrom book cover design and ebook cover design to interior book layout design, every detail is crafted to match your genre, audience, and message—so your book doesn’t just exist, it competes. Our professional book cover designers ensure your book looks market-ready for Amazon KDP publishing and other platforms where first impressions decide everything. We also provide complete book formatting services, ensuring your manuscript is perfectly structured for both print and digital publishing.",
+    heroClosing: 'Readers don’t read books they overlook—and design is what decides that moment.',
     heroTag: 'Design Services',
     subServices: [
       {
@@ -122,8 +131,11 @@ export const servicesData: Record<string, Service> = {
   publishing: {
     slug: 'publishing',
     title: 'Publishing',
-    heroTitle: 'End-to-End Book Publishing Services',
-    heroSubtitle: 'From ISBN registration and global distribution to Amazon KDP setup — we handle everything so your book reaches readers worldwide, professionally published and perfectly presented.',
+    heroTitle: 'Your Book Isn’t Meant to Stay Unpublished',
+    cardsTitle: 'Publishing Solutions',
+    workflowTitle: 'Publishing',
+    heroSubtitle: "You didn’t come this far just to leave your book unfinished. We turn unfinished manuscripts into published books on Amazon and beyond.\n\nWhether you're searching for how to publish a book, need self publishing services, or full ebook publishing services, we remove the confusion and handle everything for you. Most authors get stuck in “almost there.” We make sure you don’t. From Amazon KDP publishing help to full distribution, your book is positioned to be discovered, not ignored.",
+    heroClosing: 'The only thing separating you from becoming a published author is execution—we handle that.',
     heroTag: 'Publishing Services',
     subServices: [
       {
@@ -161,8 +173,11 @@ export const servicesData: Record<string, Service> = {
   printing: {
     slug: 'printing',
     title: 'Printing',
-    heroTitle: 'High-Quality Book Printing Services',
-    heroSubtitle: 'From short-run print-on-demand to large offset print orders — we deliver beautifully printed books with premium paper, vibrant color, and durable bindings your readers will love.',
+    heroTitle: 'Your Book Was Meant to Be Held, Not Just Stored',
+    cardsTitle: 'Printing Solutions',
+    workflowTitle: 'Book Printing',
+    heroSubtitle: "There’s a powerful shift when your book moves from a screen into someone’s hands. Our book printing services transform your manuscript into a tangible, professional product with premium paperback and hardcover printing options.\n\nBecause readers don’t just buy books—they trust what feels real. Whether you're producing one copy or a full launch batch, we ensure your book looks like it belongs on a bestseller shelf.",
+    heroClosing: 'If it looks like a real book, it gets treated like one.',
     heroTag: 'Printing Services',
     subServices: [
       {
@@ -200,8 +215,11 @@ export const servicesData: Record<string, Service> = {
   marketing: {
     slug: 'marketing',
     title: 'Marketing',
-    heroTitle: 'Powerful Book Marketing Services',
-    heroSubtitle: 'From book launch campaigns to ongoing Amazon advertising and social media promotion — we build your author brand and connect your book with the readers who are waiting to discover it.',
+    heroTitle: 'A Book Without Marketing Is a Story No One Finds',
+    cardsTitle: 'Marketing Solutions',
+    workflowTitle: 'Marketing',
+    heroSubtitle: "Publishing is easy. Being discovered is where most authors fail. At Benjamin Publishers, our book marketing services are built to put your book in front of real readers—not just uploads sitting unnoticed.\n\nFrom Amazon book promotion to full book launch services, we help your book move from “published” to “purchased.” Because visibility isn’t luck—it’s strategy. If you're asking how to increase book sales, the answer is simple: your book needs attention, not just existence.",
+    heroClosing: 'Great books don’t sell themselves—strategic visibility sells them.',
     heroTag: 'Marketing Services',
     subServices: [
       {
@@ -239,8 +257,11 @@ export const servicesData: Record<string, Service> = {
   'audio-book': {
     slug: 'audio-book',
     title: 'Audio Book',
-    heroTitle: 'Professional Audio Book Production',
-    heroSubtitle: 'Reach the billions of audiobook listeners worldwide. We handle everything from professional narration and studio recording to ACX/Audible distribution — producing a polished audio experience your listeners will love.',
+    heroTitle: 'Your Book Should Be Heard Everywhere Your Readers Are',
+    cardsTitle: 'Audio Solutions',
+    workflowTitle: 'Audio Book',
+    heroSubtitle: "People don’t just read anymore—they listen. With our audiobook production services, we turn your manuscript into a professionally narrated experience using expert audiobook narration services and studio-quality production.\n\nYour story becomes something people can consume while driving, working, or resting—multiplying your reach without rewriting a single word. If your book isn’t an audiobook, you’re missing half your audience.",
+    heroClosing: 'If your story can be heard, it can travel further than you ever imagined.',
     heroTag: 'Audio Book Services',
     subServices: [
       {
@@ -275,14 +296,122 @@ export const servicesData: Record<string, Service> = {
       },
     ],
   },
+  'author-website': {
+    slug: 'author-website',
+    title: 'Author Website',
+    heroTitle: 'Where Authors Become Recognized, Not Forgotten',
+    cardsTitle: 'Website Solutions',
+    workflowTitle: 'Website Creation',
+    heroSubtitle: "We don’t just help you publish your book—we help you build your identity as an author people remember, trust, and follow. A book alone is not enough in today’s world. Readers don’t just buy books—they connect with authors, stories, and presence. That’s why we offer professional author website services designed to turn your name into a brand.\n\nIf you’re searching for how to become a published author or want to stand out after using self publishing services or Amazon KDP publishing, your author platform is what gives your book long-term visibility. We create powerful author websites that position you as a credible writer with a story worth following. From showcasing your book to building your personal brand, we help you turn a single publication into a growing author identity.",
+    heroClosing: 'Because in publishing, visibility creates authority—and authority creates success.',
+    heroTag: 'Author Website Services',
+    subServices: [
+      {
+        title: 'Custom Website Design',
+        description: 'Bespoke, visually stunning websites tailored to your unique author brand and genre.',
+        icon: 'FaLaptop',
+      },
+      {
+        title: 'Book Landing Pages',
+        description: 'High-conversion sales pages dedicated to your latest release, optimized for Amazon clicks and direct sales.',
+        icon: 'FaStore',
+      },
+      {
+        title: 'Email List Integration',
+        description: 'Set up your newsletter and lead magnets to capture readers and build a loyal fanbase you own.',
+        icon: 'FaEnvelope',
+      },
+      {
+        title: 'Author SEO',
+        description: 'Optimize your name and book titles to appear at the top of search results when readers look for you.',
+        icon: 'FaSearch',
+      },
+      {
+        title: 'E-commerce Integration',
+        description: 'Sell signed copies, merch, and digital downloads directly from your own professional author platform.',
+        icon: 'FaShoppingCart',
+      },
+      {
+        title: 'Social Media Sync',
+        description: 'Seamlessly connect your Instagram, TikTok, and Facebook feeds to your website for a unified online presence.',
+        icon: 'FaHashtag',
+      },
+    ],
+  },
+  about: {
+    slug: 'about',
+    title: 'About Us',
+    heroTitle: 'We Don’t Just Publish Books—We Build Authors',
+    cardsTitle: 'Our Values',
+    workflowTitle: 'Our Story',
+    heroSubtitle: "We believe every powerful book starts with a simple idea—but only becomes real with the right guidance, structure, and execution.\n\nMost aspiring authors don’t struggle because they lack stories. They struggle because they don’t know how to turn their idea into a finished, published book. That’s where we come in. We are a full-service publishing partner offering book writing, editing, cover design, formatting, publishing, printing, marketing, and audiobook production—everything you need to take your book from concept to global platforms like Amazon KDP and beyond. Whether you're searching for how to publish a book, need help with self publishing services, or want a complete team to turn your manuscript into a professional book, North Crest is built to guide you through every step. We don’t overwhelm you with technical jargon or complicated processes. We simplify publishing so you can focus on what matters most—your story.",
+    heroClosing: 'Your legacy is one book away—let’s write it together.',
+    heroTag: 'About Benjamin Publishers',
+    subServices: [],
+  },
+  contact: {
+    slug: 'contact',
+    title: 'Contact Us',
+    heroTitle: 'Let’s Create Something Worth Remembering',
+    cardsTitle: 'Contact Options',
+    workflowTitle: 'Our Process',
+    heroSubtitle: "At Northcrest Book Publishers, we don’t just publish books—we help shape ideas into powerful, lasting works. Whether you're at the beginning or ready to launch, our team ensures your journey is seamless, professional, and thoughtfully guided.\n\nNo noise. No pressure. Just expertise, creativity, and results. Get in touch today—and let’s build something exceptional.",
+    heroClosing: 'Your journey from manuscript to masterpiece begins with a single conversation.',
+    heroTag: 'Contact Northcrest',
+    subServices: [],
+  },
+  illustration: {
+    slug: 'illustration',
+    title: 'Illustration',
+    heroTitle: 'Where Your Story Becomes a Visual Experience',
+    cardsTitle: 'Illustration Solutions',
+    workflowTitle: 'Book Illustration',
+    heroSubtitle: "Great books don’t just tell stories—they create worlds readers can see. We transform your manuscript into a visually immersive experience through powerful illustrations, cover design, and layout artistry.\n\nFrom book cover design and ebook cover design to interior illustrations and book formatting, every visual element is designed to deepen emotional connection and strengthen your story’s identity. Our professional book cover designers ensure your book stands out instantly across platforms like Amazon KDP publishing, while maintaining consistency, emotion, and market appeal. Whether you’re planning to publish your ebook online or release a printed edition, we ensure your visuals don’t just support your story—they amplify it.",
+    heroClosing: 'A story is remembered not only by what it says—but by what it makes people see.',
+    heroTag: 'Illustration Services',
+    subServices: [
+      {
+        title: 'Character Design',
+        description: 'Bring your protagonists to life with custom character designs that capture their essence, personality, and world perfectly.',
+        icon: 'FaUserAlt',
+      },
+      {
+        title: 'Book Cover Illustration',
+        description: 'Bespoke, high-impact illustrations for your book cover that stop readers in their tracks and demand to be picked up.',
+        icon: 'FaPalette',
+      },
+      {
+        title: "Children's Book Art",
+        description: 'Whimsical and engaging illustrations specifically crafted for young readers, perfect for picture books and early readers.',
+        icon: 'FaStar',
+      },
+      {
+        title: 'Interior Spot Art',
+        description: 'Add visual interest to your pages with professional spot illustrations that highlight key moments and themes throughout your book.',
+        icon: 'FaPenFancy',
+      },
+      {
+        title: 'Technical Illustration',
+        description: 'Clear, professional diagrams, maps, and technical drawings for non-fiction, educational, and fantasy world-building.',
+        icon: 'FaDraftingCompass',
+      },
+      {
+        title: 'Storyboarding',
+        description: 'Visualize your narrative flow with professional storyboards, ideal for graphic novels or complex scene planning.',
+        icon: 'FaLayerGroup',
+      },
+    ],
+  },
 };
 
 export const servicesList = [
   { slug: 'writing', title: 'Writing', label: 'Writing' },
   { slug: 'editing', title: 'Editing', label: 'Editing' },
   { slug: 'design', title: 'Design', label: 'Design' },
+  { slug: 'illustration', title: 'Illustration', label: 'Illustration' },
   { slug: 'publishing', title: 'Publishing', label: 'Publishing' },
   { slug: 'printing', title: 'Printing', label: 'Printing' },
   { slug: 'marketing', title: 'Marketing', label: 'Marketing' },
   { slug: 'audio-book', title: 'Audio Book', label: 'Audio Book' },
+  { slug: 'author-website', title: 'Author Website', label: 'Author Website' },
 ];

@@ -78,14 +78,14 @@ export default function SplitIntroSection() {
           className="flex flex-col text-left"
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-6 leading-tight">
-            We Handle The Hard Part,<br />
-            You Keep Writing.
+            We Don’t Just Publish Books—<br />
+            We Build Authors.
           </h2>
           <p className="text-gray-600 mb-4 text-sm md:text-base leading-relaxed">
-            Publishing your book shouldn&apos;t feel complicated. That&apos;s why we built Northcrest Book Publishers — a creative publishing studio that simplifies the process for authors.
+            We believe every powerful book starts with a simple idea—but only becomes real with the right guidance, structure, and execution.
           </p>
-          <p className="text-gray-600 mb-8 text-sm md:text-base leading-relaxed">
-            Whether it&apos;s your first novel or your tenth release, we take care of editing, design, and publishing details so you can focus on what truly matters — writing your next chapter.
+          <p className="text-gray-600 mb-8 text-sm md:text-base leading-relaxed font-medium">
+            Most aspiring authors don’t struggle because they lack stories. They struggle because they don’t know how to turn their idea into a finished, published book. That’s where we come in. We simplify the entire journey so you can focus on what matters most—your story.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
