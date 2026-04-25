@@ -13,7 +13,7 @@ export default function Footer() {
             <Link href="/" className="flex-shrink-0 transition-transform hover:scale-105">
               <div className="w-48">
                 <img 
-                  src="/logo.png" 
+                  src="/north.png" 
                   alt="Northcrest Book Publishers Logo" 
                   className="w-full h-auto object-contain brightness-125 contrast-125 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]" 
                 />

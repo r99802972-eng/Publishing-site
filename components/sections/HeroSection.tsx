@@ -16,14 +16,14 @@ function AnimatedChar({ char, index, progress }: { char: string, index: number, 
   });
 
   const color = useTransform(
-    progress, 
-    [start, start + duration / 2, end], 
+    progress,
+    [start, start + duration / 2, end],
     ["#C8A96E", "#FFFFFF", "#C8A96E"]
   );
 
   return (
-    <motion.span 
-      style={{ scale, color }} 
+    <motion.span
+      style={{ scale, color }}
       className="inline-block will-change-transform whitespace-pre"
     >
       {char}
@@ -59,8 +59,8 @@ export default function HeroSection() {
           <source src="/14116558-uhd_3840_2160_60fps.mp4" type="video/mp4" />
         </video>
         {/* Cinematic Overlay */}
-        <div 
-          className="absolute inset-0 z-10" 
+        <div
+          className="absolute inset-0 z-10"
           style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%)' }}
         />
       </div>
@@ -81,11 +81,11 @@ export default function HeroSection() {
           {/* Line 2 — synchronized pulse */}
           <div className="flex items-center justify-center overflow-visible text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[4.5rem] font-display font-bold leading-tight">
             {"Published Book".split("").map((char, i) => (
-              <AnimatedChar 
-                key={i} 
-                char={char} 
-                index={i} 
-                progress={progress} 
+              <AnimatedChar
+                key={i}
+                char={char}
+                index={i}
+                progress={progress}
               />
             ))}
           </div>
@@ -172,14 +172,17 @@ export default function HeroSection() {
             </div>
             <button
               type="submit"
-              className="flex-shrink-0 font-bold text-base px-10 py-4 rounded-full transition-all hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap"
+              className="flex-shrink-0 font-bold text-base px-10 py-4 rounded-full transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap"
               style={{
                 background: '#C8A96E',
                 color: '#0A1D37',
                 boxShadow: '0 10px 25px rgba(200,169,110,0.2)',
               }}
             >
-              Start My Book Journey <span className="text-xl leading-none">›</span>
+              Submit
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
             </button>
           </form>
         </div>

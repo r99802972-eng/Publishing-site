@@ -38,7 +38,11 @@ export default async function ServicePage({ params }: PageProps) {
         items={service.subServices} 
         serviceName={service.cardsTitle} 
       />
-      <ServiceWorkflow serviceName={service.workflowTitle} />
+      <ServiceWorkflow 
+        serviceName={service.workflowTitle} 
+        prefix={service.workflowPrefix}
+        steps={service.workflowSteps} 
+      />
       <ContactStrip />
       <FAQSection />
       <ContactFormSection />

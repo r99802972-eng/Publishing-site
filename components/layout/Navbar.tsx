@@ -74,15 +74,17 @@ export default function Navbar() {
       />
 
       {/* Logo — sit naturally on background */}
-      <Link href="/" className="flex-shrink-0 transition-transform hover:scale-105">
-        <div className="flex items-center justify-center" style={{ width: '180px', height: '90px' }}>
+      <Link href="/" className="relative flex-shrink-0 transition-transform hover:scale-105">
+        {/* Soft radial glow behind the logo to ensure white text is visible on light backgrounds without a hard box */}
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.6)_0%,transparent_70%)] pointer-events-none transition-opacity duration-500 -z-10 ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
+        <div className="flex items-center justify-center relative z-10" style={{ width: '180px', height: '90px' }}>
           <Image
-            src="/logo.png"
+            src="/north.png"
             alt="Northcrest Book Publishers"
             width={180}
             height={90}
             className="object-contain brightness-125 contrast-125"
-            style={{ filter: 'drop-shadow(0px 4px 10px rgba(0,0,0,0.9))' }}
+            style={{ filter: 'drop-shadow(0px 2px 5px rgba(0,0,0,0.8))' }}
             priority
           />
         </div>
@@ -90,10 +92,10 @@ export default function Navbar() {
 
       {/* Pill nav bar */}
       <div
-        className="flex-none xl:flex-1 ml-auto xl:ml-0 flex items-center justify-center xl:justify-between rounded-full shadow-xl"
+        className="flex-none ml-auto xl:mx-auto flex items-center justify-center rounded-full shadow-xl"
         style={{
           background: 'rgba(26, 26, 26, 0.92)',
-          padding: '12px',
+          padding: '10px 16px',
         }}
       >
         {/* Desktop Nav Links */}
@@ -188,7 +190,7 @@ export default function Navbar() {
                 <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                   <span className="text-[#C8A96E] font-black text-xl">N</span>
                 </div>
-                <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Northcrest Publishers</span>
+                <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Northcrest Book Publishers</span>
               </div>
             </div>
           </motion.div>

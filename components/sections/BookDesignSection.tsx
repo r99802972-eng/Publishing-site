@@ -53,12 +53,17 @@ export default function BookDesignSection() {
 
   // Custom-generated brand-aligned book covers
   const bookCovers = [
-    "/covers/cover1.png",
-    "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=600&auto=format&fit=crop",
-    "/covers/cover3.png",
-    "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop",
-    "/covers/cover2.png",
-    "https://images.unsplash.com/photo-1618365908648-e71bd5716cba?q=80&w=600&auto=format&fit=crop",
+    "/covers/a.png",
+    "/covers/b.png",
+    "/covers/c.png",
+    "/covers/d.png",
+    "/covers/e.png",
+    "/covers/f.png",
+    "/covers/g.png",
+    "/covers/h.png",
+    "/covers/i.png",
+    "/covers/j.png",
+    "/covers/k.png",
   ];
 
   return (

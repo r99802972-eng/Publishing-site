@@ -1,6 +1,7 @@
 'use client';
 import { motion, useMotionValue, animate, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
+import { WorkflowStep } from '@/data/types';
 
 // 🎨 Sub-component for individual character pulse (reusing your brand signature)
 function AnimatedChar({ char, index, progress }: { char: string, index: number, progress: any }) {
@@ -31,7 +32,34 @@ function AnimatedChar({ char, index, progress }: { char: string, index: number, 
   );
 }
 
-export default function ServiceWorkflow({ serviceName = "Ghost Writing" }: { serviceName?: string }) {
+const defaultSteps: WorkflowStep[] = [
+  {
+    title: "Share Your Vision",
+    desc: "Tell us about your book idea in a detailed call or written brief. Whether it's a memoir, fiction, or a business book, we take the time to understand your goals and writing style."
+  },
+  {
+    title: "Research & Structured Outline",
+    desc: "We create a detailed outline based on your input and our research, ensuring a strong foundation for your book. This stage includes recorded brainstorming sessions for reference."
+  },
+  {
+    title: "Writing & Feedback Loop",
+    desc: "Our expert ghostwriters bring your story to life, providing regular chapter drafts for your feedback. We offer unlimited revisions and real-time discussions via scheduled calls."
+  },
+  {
+    title: "Refinement & Finalization",
+    desc: "After incorporating all revisions, we polish the manuscript with professional editing. Every step is recorded and shared, ensuring transparency and alignment with your vision."
+  }
+];
+
+export default function ServiceWorkflow({ 
+  serviceName = "Ghost Writing",
+  prefix = "Our Book",
+  steps = defaultSteps
+}: { 
+  serviceName?: string,
+  prefix?: string,
+  steps?: WorkflowStep[]
+}) {
   const progress = useMotionValue(0);
 
   useEffect(() => {
@@ -44,25 +72,6 @@ export default function ServiceWorkflow({ serviceName = "Ghost Writing" }: { ser
     return () => controls.stop();
   }, [progress]);
 
-  const steps = [
-    {
-      title: "Share Your Vision",
-      desc: "Tell us about your book idea in a detailed call or written brief. Whether it's a memoir, fiction, or a business book, we take the time to understand your goals and writing style."
-    },
-    {
-      title: "Research & Structured Outline",
-      desc: "We create a detailed outline based on your input and our research, ensuring a strong foundation for your book. This stage includes recorded brainstorming sessions for reference."
-    },
-    {
-      title: "Writing & Feedback Loop",
-      desc: "Our expert ghostwriters bring your story to life, providing regular chapter drafts for your feedback. We offer unlimited revisions and real-time discussions via scheduled calls."
-    },
-    {
-      title: "Refinement & Finalization",
-      desc: "After incorporating all revisions, we polish the manuscript with professional editing. Every step is recorded and shared, ensuring transparency and alignment with your vision."
-    }
-  ];
-
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container-pad w-full max-w-7xl mx-auto">
@@ -70,7 +79,7 @@ export default function ServiceWorkflow({ serviceName = "Ghost Writing" }: { ser
         {/* Heading */}
         <div className="text-center mb-20">
           <h2 className="text-3xl md:text-5xl font-display font-bold text-[#0F2440] leading-tight">
-            Our Book <br className="md:hidden" />
+            {prefix} <br className="md:hidden" />
             <span className="inline-flex overflow-visible mx-2">
               {(serviceName + " ").split("").map((char, i) => (
                 <AnimatedChar 

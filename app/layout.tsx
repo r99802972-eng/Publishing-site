@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: 'Northcrest Book Publishers',
     images: [
       {
-        url: '/logo.png',
+        url: '/north.png',
         width: 800,
         height: 600,
         alt: 'Northcrest Book Publishers Logo',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Northcrest Book Publishers',
     description: 'Professional Book Writing & Publishing Services',
-    images: ['/logo.png'],
+    images: ['/north.png'],
   },
 };
 

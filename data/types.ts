@@ -4,16 +4,23 @@ export interface SubService {
   icon: string;
 }
 
+export interface WorkflowStep {
+  title: string;
+  desc: string;
+}
+
 export interface Service {
   slug: string;
   title: string;
   heroTitle: string;
   cardsTitle: string;
+  workflowPrefix?: string;
   workflowTitle: string;
   heroSubtitle: string;
   heroTag: string;
   heroClosing?: string;
   subServices: SubService[];
+  workflowSteps?: WorkflowStep[];
 }
 
 export interface Testimonial {

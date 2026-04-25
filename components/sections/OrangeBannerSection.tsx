@@ -22,13 +22,13 @@ const FloatingBook = () => {
           }}
         >
           {/* Main Book Visual */}
-          <div className="relative shadow-[40px_50px_100px_rgba(0,0,0,0.6)] rounded-[4px] overflow-hidden border-l border-white/10">
+          <div className="relative shadow-[40px_50px_100px_rgba(0,0,0,0.6)] rounded-[4px] overflow-hidden border-l border-white/10 bg-black">
             <Image
-              src="/book-mockup.png"
+              src="/image.png"
               alt="Northcrest Publishers Book Mockup"
               width={420}
               height={600}
-              className="w-full h-auto object-contain [mask-image:radial-gradient(circle,white_70%,transparent_100%)] mix-blend-lighten"
+              className="w-full h-auto object-cover"
               priority
             />
             {/* Realistic Light Highlight on the cover edge */}
@@ -65,10 +65,10 @@ const FloatingBook = () => {
 
 export default function OrangeBannerSection() {
   const benefits = [
-    "Guaranteed Sales",
-    "Full Copyright & Royalties",
-    "Globally Recognized Platform",
-    "100% Satisfaction"
+    "Built to Sell—Not Just Publish",
+    "You Keep 100% Ownership & Royalties",
+    "Launch on Platforms That Actually Matter",
+    "Results You Can See—Or We Keep Working"
   ];
 
   return (
@@ -86,8 +86,8 @@ export default function OrangeBannerSection() {
         {/* Right Side: Content and Branding */}
         <div className="order-1 lg:order-2 text-white text-center lg:text-left">
           <h2 className="text-3xl md:text-5xl lg:text-5xl font-display font-bold mb-10 leading-tight">
-            We Handle Every Aspect Of The Publishing Process <br className="hidden lg:block" />
-            <span className="text-[#C8A96E]">To Give You The Greatest Results Within Months Or Less.</span>
+            Turn Your Book Into a Published Asset—Without The Confusion, Delays, or Guesswork. <br className="hidden lg:block" />
+            <span className="text-[#C8A96E]">From First Draft to Global Distribution—Done Right, Done Fast, Done For You.</span>
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 mb-14 text-left">
@@ -106,7 +106,7 @@ export default function OrangeBannerSection() {
               href="/contact-us"
               className="inline-block bg-[#C8A96E] text-[#0A1D37] font-bold px-12 py-5 rounded-full hover:bg-[#DBC598] hover:shadow-[0_20px_50px_rgba(200,169,110,0.3)] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-xl text-xl"
             >
-              Speak With An Expert
+              🚀 Start My Book Now
             </Link>
           </div>
         </div>
