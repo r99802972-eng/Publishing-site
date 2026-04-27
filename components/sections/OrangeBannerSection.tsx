@@ -106,7 +106,7 @@ export default function OrangeBannerSection() {
               href="/contact-us"
               className="inline-block bg-[#C8A96E] text-[#0A1D37] font-bold px-12 py-5 rounded-full hover:bg-[#DBC598] hover:shadow-[0_20px_50px_rgba(200,169,110,0.3)] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-xl text-xl"
             >
-              🚀 Start My Book Now
+             Start My Book Now
             </Link>
           </div>
         </div>

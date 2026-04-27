@@ -180,7 +180,7 @@ export default function Navbar() {
                 href="/contact-us"
                 onClick={() => setMenuOpen(false)}
                 className="block text-center font-black text-sm py-5 rounded-2xl uppercase tracking-[0.2em]"
-                style={{ background: '#FE7028', color: '#FFFFFF' }}
+                style={{ background: '#C8A96E', color: '#FFFFFF' }}
               >
                 Get Started
               </Link>

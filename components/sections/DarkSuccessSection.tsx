@@ -80,7 +80,7 @@ export default function DarkSuccessSection() {
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 md:p-4 shadow-xl">
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-white font-bold text-lg md:text-xl">24 – 48</span>
-                      <div className="w-4 h-4 md:w-5 md:h-5 bg-[#FE7028] rounded-full flex items-center justify-center">
+                      <div className="w-4 h-4 md:w-5 md:h-5 bg-[#C8A96E] rounded-full flex items-center justify-center">
                         <span className="text-[8px] md:text-[10px] text-white">🎗</span>
                       </div>
                     </div>
@@ -117,7 +117,7 @@ export default function DarkSuccessSection() {
                     <p className="text-white font-bold text-base md:text-lg leading-tight mb-2 md:mb-3">Ebook Business</p>
                     <div className="flex items-end justify-between">
                       <span className="text-white font-bold text-2xl md:text-3xl">100%</span>
-                      <div className="w-5 h-5 md:w-6 md:h-6 bg-[#FE7028] rounded-full flex items-center justify-center">
+                      <div className="w-5 h-5 md:w-6 md:h-6 bg-[#C8A96E] rounded-full flex items-center justify-center">
                          <span className="text-[10px] md:text-[12px] text-white">🎗</span>
                       </div>
                     </div>
@@ -125,8 +125,8 @@ export default function DarkSuccessSection() {
                   {/* Mock Chart Line */}
                   <div className="absolute inset-x-0 bottom-0 h-12 md:h-16 opacity-40">
                     <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
-                      <path d="M0 35 Q 25 35, 40 25 T 70 15 T 100 5" fill="none" stroke="#FE7028" strokeWidth="2" />
-                      <circle cx="70" cy="15" r="3" fill="#FE7028" />
+                      <path d="M0 35 Q 25 35, 40 25 T 70 15 T 100 5" fill="none" stroke="#C8A96E" strokeWidth="2" />
+                      <circle cx="70" cy="15" r="3" fill="#C8A96E" />
                     </svg>
                   </div>
                 </div>
