@@ -45,12 +45,38 @@ export default function ContactFormSection() {
     return () => controls.stop();
   }, [progress]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState('submitting');
-    setTimeout(() => {
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      service: formData.get('service'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const response = await fetch(`${backendUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send');
+      }
+
       setFormState('success');
-    }, 1500);
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      setFormState('idle');
+      alert(error.message || 'Failed to send message. Please try again.');
+    }
   };
 
   return (
@@ -166,12 +192,14 @@ export default function ContactFormSection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <input
+                      name="name"
                       type="text" required placeholder="Your Name"
                       className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
                     <input
+                      name="email"
                       type="email" required placeholder="Your Email"
                       className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300"
                     />
@@ -181,12 +209,13 @@ export default function ContactFormSection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <input
+                      name="phone"
                       type="tel" required placeholder="Your Phone #"
                       className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <select defaultValue="" className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white/50 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300 appearance-none cursor-pointer">
+                    <select name="service" defaultValue="" className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white/50 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300 appearance-none cursor-pointer">
                       <option value="" disabled>Select Services</option>
                       <option value="writing">Professional Writing</option>
                       <option value="editing">Expert Editing</option>
@@ -198,6 +227,7 @@ export default function ContactFormSection() {
 
                 <div className="flex flex-col gap-2">
                   <textarea
+                    name="message"
                     rows={4}
                     placeholder="Message / Query"
                     className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#C8A96E]/50 transition-all duration-300 resize-none"
@@ -219,5 +249,6 @@ export default function ContactFormSection() {
         </div>
       </div>
     </section>
+
   );
 }

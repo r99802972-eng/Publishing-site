@@ -1,7 +1,40 @@
-'use client';
+"use client"
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function ContactStrip() {
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState('submitting');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      service: formData.get('service'),
+    };
+
+    try {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const response = await fetch(`${backendUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Failed to send');
+
+      setFormState('success');
+      setTimeout(() => setFormState('idle'), 3000);
+    } catch (error) {
+      console.error(error);
+      setFormState('idle');
+      alert('Failed to send message.');
+    }
+  };
+
   return (
     <section className="bg-transparent py-20 md:py-28 overflow-hidden">
       <div className="container-pad w-full">
@@ -21,64 +54,80 @@ export default function ContactStrip() {
           </div>
 
           {/* Form */}
-          <form className="flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-10 items-end">
-            <div className="relative group">
-              <label className="block text-[#C8A96E] text-xs font-bold uppercase tracking-widest mb-3 transition-colors group-focus-within:text-white">
-                Name
-              </label>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full bg-transparent text-white text-lg placeholder-white/20 outline-none pb-3 border-b border-white/20 focus:border-[#C8A96E] transition-all"
-              />
+          {formState === 'success' ? (
+            <div className="flex-1 text-white font-bold text-2xl text-center">
+              Message Sent Successfully!
             </div>
-
-            <div className="relative group">
-              <label className="block text-[#C8A96E] text-xs font-bold uppercase tracking-widest mb-3 transition-colors group-focus-within:text-white">
-                Email Address
-              </label>
-              <input
-                type="email"
-                placeholder="hello@example.com"
-                className="w-full bg-transparent text-white text-lg placeholder-white/20 outline-none pb-3 border-b border-white/20 focus:border-[#C8A96E] transition-all"
-              />
-            </div>
-
-            <div className="relative group">
-              <label className="block text-[#C8A96E] text-xs font-bold uppercase tracking-widest mb-3 transition-colors group-focus-within:text-white">
-                Service
-              </label>
-              <div className="relative">
-                <select
-                  defaultValue=""
-                  className="w-full bg-transparent text-white text-lg outline-none pb-3 border-b border-white/20 focus:border-[#C8A96E] appearance-none cursor-pointer"
-                >
-                  <option value="" disabled className="bg-[#0D0D0D] text-white">Select Service</option>
-                  <option value="writing" className="bg-[#0D0D0D] text-white">Ghostwriting</option>
-                  <option value="editing" className="bg-[#0D0D0D] text-white">Full Editing</option>
-                  <option value="design" className="bg-[#0D0D0D] text-white">Book Design</option>
-                  <option value="illustration" className="bg-[#0D0D0D] text-white">Illustration</option>
-                  <option value="publishing" className="bg-[#0D0D0D] text-white">Publishing</option>
-                  <option value="printing" className="bg-[#0D0D0D] text-white">Printing</option>
-                  <option value="marketing" className="bg-[#0D0D0D] text-white">Marketing</option>
-                  <option value="author-website" className="bg-[#0D0D0D] text-white">Author Website</option>
-                  <option value="audio-book" className="bg-[#0D0D0D] text-white">Audio Book</option>
-                </select>
-                <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-full text-[#C8A96E] text-sm">▾</span>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-10 items-end">
+              <div className="relative group">
+                <label className="block text-[#C8A96E] text-xs font-bold uppercase tracking-widest mb-3 transition-colors group-focus-within:text-white">
+                  Name
+                </label>
+                <input
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Your Name"
+                  className="w-full bg-transparent text-white text-lg placeholder-white/20 outline-none pb-3 border-b border-white/20 focus:border-[#C8A96E] transition-all"
+                />
               </div>
-            </div>
 
-            <div className="lg:pb-1 w-full flex justify-center lg:justify-end">
-              <button
-                type="submit"
-                className="w-full max-w-[260px] bg-[#C8A96E] hover:bg-[#DBC598] text-[#0A1D37] font-bold flex items-center justify-center py-4 rounded-full transition-all group shadow-xl active:scale-95"
-              >
-                <span className="text-[12px] uppercase tracking-[0.2em] whitespace-nowrap">Send Message</span>
-              </button>
-            </div>
-          </form>
+              <div className="relative group">
+                <label className="block text-[#C8A96E] text-xs font-bold uppercase tracking-widest mb-3 transition-colors group-focus-within:text-white">
+                  Email Address
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="hello@example.com"
+                  className="w-full bg-transparent text-white text-lg placeholder-white/20 outline-none pb-3 border-b border-white/20 focus:border-[#C8A96E] transition-all"
+                />
+              </div>
+
+              <div className="relative group">
+                <label className="block text-[#C8A96E] text-xs font-bold uppercase tracking-widest mb-3 transition-colors group-focus-within:text-white">
+                  Service
+                </label>
+                <div className="relative">
+                  <select
+                    name="service"
+                    required
+                    defaultValue=""
+                    className="w-full bg-transparent text-white text-lg outline-none pb-3 border-b border-white/20 focus:border-[#C8A96E] appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled className="bg-[#0D0D0D] text-white">Select Service</option>
+                    <option value="writing" className="bg-[#0D0D0D] text-white">Ghostwriting</option>
+                    <option value="editing" className="bg-[#0D0D0D] text-white">Full Editing</option>
+                    <option value="design" className="bg-[#0D0D0D] text-white">Book Design</option>
+                    <option value="illustration" className="bg-[#0D0D0D] text-white">Illustration</option>
+                    <option value="publishing" className="bg-[#0D0D0D] text-white">Publishing</option>
+                    <option value="printing" className="bg-[#0D0D0D] text-white">Printing</option>
+                    <option value="marketing" className="bg-[#0D0D0D] text-white">Marketing</option>
+                    <option value="author-website" className="bg-[#0D0D0D] text-white">Author Website</option>
+                    <option value="audio-book" className="bg-[#0D0D0D] text-white">Audio Book</option>
+                  </select>
+                  <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-full text-[#C8A96E] text-sm">▾</span>
+                </div>
+              </div>
+
+              <div className="lg:pb-1 w-full flex justify-center lg:justify-end">
+                <button
+                  type="submit"
+                  disabled={formState === 'submitting'}
+                  className="w-full max-w-[260px] bg-[#C8A96E] hover:bg-[#DBC598] text-[#0A1D37] font-bold flex items-center justify-center py-4 rounded-full transition-all group shadow-xl active:scale-95 disabled:opacity-50"
+                >
+                  <span className="text-[12px] uppercase tracking-[0.2em] whitespace-nowrap">
+                    {formState === 'submitting' ? 'Sending...' : 'Send Message'}
+                  </span>
+                </button>
+              </div>
+            </form>
+          )}
         </motion.div>
       </div>
     </section>
   );
 }
+

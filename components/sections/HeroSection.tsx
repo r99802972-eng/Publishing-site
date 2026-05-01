@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, useMotionValue, animate, useTransform } from 'framer-motion';
 
 // 🎨 Sub-component for individual character pulse
@@ -32,6 +32,7 @@ function AnimatedChar({ char, index, progress }: { char: string, index: number, 
 }
 
 export default function HeroSection() {
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
   const progress = useMotionValue(0);
 
   useEffect(() => {
@@ -43,6 +44,38 @@ export default function HeroSection() {
     });
     return () => controls.stop();
   }, [progress]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState('submitting');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      service: formData.get('service'),
+    };
+
+    try {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const response = await fetch(`${backendUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Failed to send');
+
+      setFormState('success');
+      // Reset form after 3 seconds
+      setTimeout(() => setFormState('idle'), 3000);
+    } catch (error) {
+      console.error(error);
+      setFormState('idle');
+      alert('Failed to send message. Please try again.');
+    }
+  };
 
   return (
     <section id="top" className="relative min-h-[120vh] flex flex-col overflow-hidden">
@@ -130,62 +163,78 @@ export default function HeroSection() {
           </div>
 
           {/* Form */}
-          <form className="flex-1 w-full flex flex-col xl:flex-row xl:flex-nowrap gap-6 items-center">
-            <div className="flex-1 min-w-0 w-full">
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full bg-transparent text-white text-base placeholder-gray-300 outline-none pb-2 border-b border-white/40 focus:border-white transition-colors"
-              />
+          {formState === 'success' ? (
+            <div className="flex-1 text-white font-bold text-xl text-center">
+              Message Sent! We'll be in touch soon.
             </div>
-            <div className="flex-1 min-w-0 w-full">
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full bg-transparent text-white text-base placeholder-gray-300 outline-none pb-2 border-b border-white/40 focus:border-white transition-colors"
-              />
-            </div>
-            <div className="flex-1 min-w-0 w-full">
-              <input
-                type="tel"
-                placeholder="Phone"
-                className="w-full bg-transparent text-white text-base placeholder-gray-300 outline-none pb-2 border-b border-white/40 focus:border-white transition-colors"
-              />
-            </div>
-            <div className="flex-1 min-w-0 relative w-full">
-              <select
-                defaultValue=""
-                className="w-full bg-transparent text-gray-300 text-base outline-none pb-2 border-b border-white/40 focus:border-white appearance-none cursor-pointer"
+          ) : (
+            <form onSubmit={handleSubmit} className="flex-1 w-full flex flex-col xl:flex-row xl:flex-nowrap gap-6 items-center">
+              <div className="flex-1 min-w-0 w-full">
+                <input
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Name"
+                  className="w-full bg-transparent text-white text-base placeholder-gray-300 outline-none pb-2 border-b border-white/40 focus:border-white transition-colors"
+                />
+              </div>
+              <div className="flex-1 min-w-0 w-full">
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="Email"
+                  className="w-full bg-transparent text-white text-base placeholder-gray-300 outline-none pb-2 border-b border-white/40 focus:border-white transition-colors"
+                />
+              </div>
+              <div className="flex-1 min-w-0 w-full">
+                <input
+                  name="phone"
+                  type="tel"
+                  required
+                  placeholder="Phone"
+                  className="w-full bg-transparent text-white text-base placeholder-gray-300 outline-none pb-2 border-b border-white/40 focus:border-white transition-colors"
+                />
+              </div>
+              <div className="flex-1 min-w-0 relative w-full">
+                <select
+                  name="service"
+                  defaultValue=""
+                  required
+                  className="w-full bg-transparent text-gray-300 text-base outline-none pb-2 border-b border-white/40 focus:border-white appearance-none cursor-pointer"
+                >
+                  <option value="" disabled className="bg-[#1a1a1a] text-white">Services</option>
+                  <option value="writing" className="bg-[#1a1a1a] text-white">Writing</option>
+                  <option value="editing" className="bg-[#1a1a1a] text-white">Editing</option>
+                  <option value="design" className="bg-[#1a1a1a] text-white">Design</option>
+                  <option value="illustration" className="bg-[#1a1a1a] text-white">Illustration</option>
+                  <option value="publishing" className="bg-[#1a1a1a] text-white">Publishing</option>
+                  <option value="printing" className="bg-[#1a1a1a] text-white">Printing</option>
+                  <option value="marketing" className="bg-[#1a1a1a] text-white">Marketing</option>
+                  <option value="author-website" className="bg-[#1a1a1a] text-white">Author Website</option>
+                  <option value="audio-book" className="bg-[#1a1a1a] text-white">Audio Book</option>
+                </select>
+                <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-full text-white text-xs">▾</span>
+              </div>
+              <button
+                type="submit"
+                disabled={formState === 'submitting'}
+                className="flex-shrink-0 font-bold text-base px-10 py-4 rounded-full transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50"
+                style={{
+                  background: '#C8A96E',
+                  color: '#0A1D37',
+                  boxShadow: '0 10px 25px rgba(200,169,110,0.2)',
+                }}
               >
-                <option value="" disabled className="bg-[#1a1a1a] text-white">Services</option>
-                <option value="writing" className="bg-[#1a1a1a] text-white">Writing</option>
-                <option value="editing" className="bg-[#1a1a1a] text-white">Editing</option>
-                <option value="design" className="bg-[#1a1a1a] text-white">Design</option>
-                <option value="illustration" className="bg-[#1a1a1a] text-white">Illustration</option>
-                <option value="publishing" className="bg-[#1a1a1a] text-white">Publishing</option>
-                <option value="printing" className="bg-[#1a1a1a] text-white">Printing</option>
-                <option value="marketing" className="bg-[#1a1a1a] text-white">Marketing</option>
-                <option value="author-website" className="bg-[#1a1a1a] text-white">Author Website</option>
-                <option value="audio-book" className="bg-[#1a1a1a] text-white">Audio Book</option>
-              </select>
-              <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-full text-white text-xs">▾</span>
-            </div>
-            <button
-              type="submit"
-              className="flex-shrink-0 font-bold text-base px-10 py-4 rounded-full transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap"
-              style={{
-                background: '#C8A96E',
-                color: '#0A1D37',
-                boxShadow: '0 10px 25px rgba(200,169,110,0.2)',
-              }}
-            >
-              Submit
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </form>
+                {formState === 'submitting' ? 'Sending...' : 'Submit'}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </form>
+          )}
         </div>
+
 
         {/* Explore */}
         <div className="flex flex-col items-center py-6">

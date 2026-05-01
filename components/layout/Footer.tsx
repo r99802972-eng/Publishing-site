@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { servicesList } from '@/data/services';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,10 +13,10 @@ export default function Footer() {
           <div className="flex flex-col gap-8">
             <Link href="/" className="flex-shrink-0 transition-transform hover:scale-105">
               <div className="w-48">
-                <img 
-                  src="/north.png" 
-                  alt="Northcrest Book Publishers Logo" 
-                  className="w-full h-auto object-contain brightness-125 contrast-125 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]" 
+                <img
+                  src="/north.png"
+                  alt="Northcrest Book Publishers Logo"
+                  className="w-full h-auto object-contain brightness-125 contrast-125 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]"
                 />
               </div>
             </Link>
@@ -35,11 +36,11 @@ export default function Footer() {
           <div className="lg:pl-8">
             <h4 className="text-[#C8A96E] text-xs font-bold uppercase tracking-[0.2em] mb-8">Services</h4>
             <ul className="flex flex-col gap-4">
-              {['Writing', 'Editing', 'Design', 'Publishing', 'Printing', 'Marketing'].map((item) => (
-                <li key={item}>
-                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 text-[15px] font-medium hover:text-[#C8A96E] transition-colors flex items-center gap-2 group">
+              {servicesList.map((service) => (
+                <li key={service.slug}>
+                  <Link href={`/${service.slug}`} className="text-gray-400 text-[15px] font-medium hover:text-[#C8A96E] transition-colors flex items-center gap-2 group">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96E]/30 group-hover:bg-[#C8A96E] transition-all duration-300" />
-                    {item}
+                    {service.label}
                   </Link>
                 </li>
               ))}
@@ -94,7 +95,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold uppercase tracking-widest opacity-50 mb-0.5">Office</span>
-                  <span className="text-white font-bold text-sm leading-tight">100 Wilshire Blvd, Suite 700,<br/>Santa Monica, CA 90401</span>
+                  <span className="text-white font-bold text-sm leading-tight">100 Wilshire Blvd, Suite 700,<br />Santa Monica, CA 90401</span>
                 </div>
               </li>
             </ul>
